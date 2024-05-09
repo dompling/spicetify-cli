@@ -16,3 +16,5 @@ package.json
 install.log
 
 pnpm-lock.yaml
+.idea
+.vscode
