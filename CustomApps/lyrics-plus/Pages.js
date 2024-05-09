@@ -189,8 +189,8 @@ const SyncedLyricsPage = react.memo(({ lyrics = [], provider, copyright, isKara 
 						onContextMenu: event => {
 							event.preventDefault();
 							Spicetify.Platform.ClipboardAPI.copy(rawLyrics)
-								.then(() => Spicetify.showNotification("Lyrics copied to clipboard"))
-								.catch(() => Spicetify.showNotification("Failed to copy lyrics to clipboard"));
+								.then(() => Spicetify.showNotification("歌词已复制到剪贴板"))
+								.catch(() => Spicetify.showNotification("无法将歌词复制到剪贴板"));
 						}
 					},
 					!isKara ? text : react.createElement(KaraokeLine, { text, startTime, position, isActive })
@@ -437,8 +437,8 @@ const SyncedExpandedLyricsPage = react.memo(({ lyrics, provider, copyright, isKa
 					onContextMenu: event => {
 						event.preventDefault();
 						Spicetify.Platform.ClipboardAPI.copy(rawLyrics)
-							.then(() => Spicetify.showNotification("Lyrics copied to clipboard"))
-							.catch(() => Spicetify.showNotification("Failed to copy lyrics to clipboard"));
+							.then(() => Spicetify.showNotification("歌词已复制到剪贴板"))
+							.catch(() => Spicetify.showNotification("无法将歌词复制到剪贴板"));
 					}
 				},
 				!isKara ? text : react.createElement(KaraokeLine, { text, startTime, position, isActive })
