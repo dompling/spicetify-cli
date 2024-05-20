@@ -288,9 +288,11 @@ class LyricsContainer extends react.Component {
             }
 
 
-            const language = this.provideLanguageCode(finalData.synced);
+            const language = Utils.detectLanguage(finalData.synced) || "en";
+
             const friendlyLanguage = language && new Intl.DisplayNames(["en"], {type: "language"}).of(language.split("-")[0])?.toLowerCase();
-            if (friendlyLanguage !== "chinese") {
+
+            if (["zh","chinese"].indexOf(friendlyLanguage)===-1) {
                 for (const key in Translates) {
                     try {
                         finalData[`${key}Translation`] = await Translates[key](finalData.synced, CONFIG.translate[key].token);
