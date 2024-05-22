@@ -755,7 +755,7 @@ class LyricsContainer extends react.Component {
             const translatedLyrics = this.state[CONFIG.visual[`translation-mode:${friendlyLanguage}`]];
             let lyrics = CONFIG.visual.translate && translatedLyrics ? translatedLyrics : this.state.currentLyrics;
             const translatedLyricsCache = this.state[CONFIG.visual["translate:translated-lyrics-source"]];
-            if (CONFIG.visual.originalWordDisplay && translatedLyricsCache) {
+            if (CONFIG.visual.originalWordDisplay && translatedLyricsCache && lyrics) {
                 lyrics = Utils.processTranslatedOriginalLyrics(lyrics, this.state.synced);
             }
 
