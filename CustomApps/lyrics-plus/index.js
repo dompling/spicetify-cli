@@ -289,22 +289,22 @@ class LyricsContainer extends react.Component {
 
 
             const language = Utils.detectLanguage(finalData.synced) || "en";
-
+        
             const friendlyLanguage = language && new Intl.DisplayNames(["en"], {type: "language"}).of(language.split("-")[0])?.toLowerCase();
             console.log(friendlyLanguage);
             if (["zh", "chinese"].indexOf(friendlyLanguage) === -1) {
-                for (const key in Translates) {
-                    try {
-                        finalData[`${key}Translation`] = await Translates[key](
-                            finalData.synced,
-                            CONFIG.translate[key].token
-                        );
-                    } catch (e) {
-                        console.error(e);
-                    }
+              for (const key in Translates) {
+                try {
+                  finalData[`${key}Translation`] = await Translates[key](
+                    finalData.synced,
+                    CONFIG.translate[key].token
+                  );
+                } catch (e) {
+                  console.error(e);
                 }
+              }
             }
-
+        
             CACHE[data.uri] = finalData;
             console.log(finalData);
             return finalData;
@@ -317,18 +317,18 @@ class LyricsContainer extends react.Component {
 
     async fetchLyrics(track, mode = -1) {
         this.state.furigana =
-            this.state.romaji =
-                this.state.hiragana =
-                    this.state.katakana =
-                        this.state.hangul =
-                            this.state.romaja =
-                                this.state.cn =
-                                    this.state.hk =
-                                        this.state.tw =
-                                            this.state.musixmatchTranslation =
-                                                this.state.baiduTranslation =
-                                                    this.state.neteaseTranslation =
-                                                        null;
+          this.state.romaji =
+          this.state.hiragana =
+          this.state.katakana =
+          this.state.hangul =
+          this.state.romaja =
+          this.state.cn =
+          this.state.hk =
+          this.state.tw =
+          this.state.musixmatchTranslation =
+          this.state.baiduTranslation =
+          this.state.neteaseTranslation =
+            null;
         const info = this.infoFromTrack(track);
         if (!info) {
             this.setState({error: "没有曲目信息"});
@@ -774,7 +774,7 @@ class LyricsContainer extends react.Component {
             let lyrics = CONFIG.visual.translate && translatedLyrics ? translatedLyrics : this.state.currentLyrics;
 
             const translatedLyricsCache = this.state[CONFIG.visual["translate:translated-lyrics-source"]];
-
+            
             if (CONFIG.visual.originalWordDisplay && translatedLyricsCache && lyrics) {
                 lyrics = Utils.processTranslatedOriginalLyrics(lyrics, this.state.synced);
             }

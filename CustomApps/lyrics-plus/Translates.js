@@ -22,7 +22,6 @@ const Translates = {
                 return {startTime: item.startTime, text: result[index]}
             })
         }
-        console.log(result);
         return result;
     }
 };
